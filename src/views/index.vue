@@ -188,31 +188,40 @@ onUnmounted(() => {
           <ul>
             <li>
                 <h1>1</h1>
-                <h3>因為，「找到自己的熱情」這件事<br>學校從來沒教，但人生真的需要。</h3>
+                <h3>因為，<span style="background-color:burlywood; color: aliceblue;">找到自己的熱情</span> 這件事<br>學校從來沒教，但人生真的需要。</h3>
                 <p>
-                  在考試和分數裡長大的我們，很少有機會探索不同選項。<br>
-                  但未來的人生，不是靠選擇題裡的標準答案。<br>
+                  在考試和分數裡長大的我們，<br>
+                  很少有機會探索不同選項。<br><br>
+                  但未來的人生，<br>
+                  不是靠選擇題裡的標準答案。<br><br>
                   要走哪條路、要成為什麼樣的人，<br>
-                  這一切，都得從認識自己、探索熱情開始。
+                  這一切，<br>
+                  都得從認識自己、探索熱情開始。
                 </p>
               </li>
               <li>
                 <h1>2</h1>
-                <h3>因為，當你投入喜歡的事，生活真的會不一樣。</h3>
+                <h3>因為，當你投入喜歡的事，<br><span style="background-color:burlywood; color: aliceblue;">生活真的會不一樣。</span></h3>
                 <p>
-                  專注在真正熱愛的事情上，不只會找回自信與成就感，<br>
-                  也會讓你更願意面對挑戰、承受挫折，並且持續前進。<br>
-                  找到熱情的人，不是因為人生變容易了，<br>
-                  而是即使遇到困難，他們也有一個願意為之努力的理由。
+                  專注在真正熱愛的事情上，<br>
+                  不只會找回自信與成就感，<br>
+                  也會讓你更願意面對挑戰、承受挫折，<br>
+                  並且持續前進。<br><br>
+                  找到熱情的人，<br>
+                  不是因為人生變容易了，<br>
+                  而是即使遇到困難，<br>
+                  他們也有一個願意為之努力的理由。
                 </p>
               </li>
               <li>
                 <h1>3</h1>
-                <h3>因為，在這裡，你不必一個人摸索。</h3>
+                <h3>因為，在這裡，<br><span style="background-color:burlywood; color: aliceblue;">你不必一個人摸索。</span></h3>
                 <p>
                   探索本來就是一件孤單又不確定的事，<br>
-                  但在這裡，你會有一群同行的人。<br>
-                  我們走過迷惘，所以更懂得如何陪伴，<br>
+                  但在這裡，<br>
+                  你會有一群同行的人。<br><br>
+                  我們走過迷惘，<br>
+                  所以更懂得如何陪伴，<br>
                   讓你不用再一個人迷路。
                 </p>
               </li>
@@ -328,6 +337,12 @@ onUnmounted(() => {
                 </li>
               </ul>
             </div>
+          </div>
+        </section>
+        <section id="who" class="zone7">
+          <h2 class="zone_title">我們是誰？</h2>
+          <div class="whoweare">
+
           </div>
         </section>
       </section>
@@ -738,7 +753,7 @@ input#menu {
   position: relative;
   padding-left: 30px;
   border-left: 1px solid #E8C39E;
-  width: 60%;
+  width: 50%;
   margin: 0 auto 4rem;
   padding-bottom: 1rem;
 }
@@ -791,9 +806,12 @@ input#menu {
 .zone4 ul {
   list-style: none;
   margin: 0 auto;
-  width: 50%;
+  width: 100%;
   min-width: 400px;
   padding: 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .zone4 li {
@@ -807,6 +825,8 @@ input#menu {
   border-color: rgb(217 165 102);
   border-left-style: solid;
   margin-top: 2rem;
+  flex-grow: 1;
+  min-width: 38 0px;
 }
 
 .zone4 h1{
@@ -821,16 +841,23 @@ input#menu {
 .zone4 p{
   width: fit-content;
   margin: 0 auto 1.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 /* 結語 */
 .zone5 {
-  background-color: #f6f6f6;
+  background-color: #D96D5B;
   padding: 4rem 5rem;
   margin-top: -5rem;
   position: relative;
   z-index: 3;
+}
+
+.zone5 p {
+  color: #fff;
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 1.25rem;
 }
 
 /* 報名資訊 */
@@ -921,6 +948,20 @@ input#menu {
   display: flex;
   margin-top: 0.4rem;
   margin-right: 1rem;
+}
+
+/* 成員介紹 */
+.zone7{
+  background-color: #f6f6f6;
+  padding: 4rem 5rem;
+  position: relative;
+  z-index: 5;
+}
+
+.whoweare{
+  display: grid;
+  max-width: 64rem;
+  margin: 5rem auto;
 }
 
 /* 響應式斷點 */
