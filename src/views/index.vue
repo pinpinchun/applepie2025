@@ -2,19 +2,28 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const activeIndex = ref('1')
-const isMobile = ref(false)
+const isMobile = ref(false);
+const isPaid = ref(false);
 
-const checkMobile = () => {
-  isMobile.value = window.innerWidth <= 1024
+const checkRWD = () => {
+  if (window.innerWidth <= 1024 && window.innerWidth > 576){
+    isPaid.value = true;
+    isMobile.value = false;
+  }
+
+  if (window.innerWidth <= 576){
+    isPaid.value = false;
+    isMobile.value = true;
+  }
 }
 
 onMounted(() => {
-  checkMobile()
-  window.addEventListener('resize', checkMobile)
+  checkRWD()
+  window.addEventListener('resize', checkRWD)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', checkMobile)
+  window.removeEventListener('resize', checkRWD)
 })
 </script>
 
@@ -35,7 +44,7 @@ onUnmounted(() => {
         </el-menu-item>
 
         <!-- Desktop Nav -->
-        <template v-if="!isMobile">
+        <template v-if="!isMobile && !isPaid">
           <el-menu-item index="1"><a href="#about" class="nav-link">關於計畫</a></el-menu-item>
           <el-menu-item index="2"><a href="#why" class="nav-link">為什麼參加</a></el-menu-item>
           <el-menu-item index="3"><a href="#process" class="nav-link">活動流程</a></el-menu-item>
@@ -45,7 +54,7 @@ onUnmounted(() => {
       </el-menu>
 
       <!-- Mobile Nav -->
-      <nav class="nav-box" v-if="isMobile">
+      <nav class="nav-box" v-if="isMobile || isPaid">
         <input type="checkbox" id="menu">
         <label for="menu" class="line">
           <div class="menu"></div>
@@ -63,8 +72,10 @@ onUnmounted(() => {
       </nav>
       <section class="declaration">
         <h1>蘋果派計畫</h1>
-        <h4>兩天找到屬於你的 Passion Project</h4>
-        <h5>"在迷惘的人生中，至少要為一件熱情的事而行動。"</h5>
+        <h4 v-if="!isMobile && !isPaid">兩天找到屬於你的 Passion Project</h4>
+        <h4 v-else>兩天找到屬於你的 <br>Passion Project</h4>
+        <h5 v-if="!isMobile && !isPaid">"在迷惘的人生中，至少要為一件熱情的事而行動。"</h5>
+        <h5 v-else>"在迷惘的人生中，<br>至少要為一件熱情的事而行動。"</h5>
         <a href="#registration" class="btn">
           <svg height="18" width="18" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
               <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
@@ -512,6 +523,7 @@ input#menu {
 
   .intro {
     flex-direction: column;
+    gap: 2rem;
   }
 
   .intro img{
@@ -524,6 +536,10 @@ input#menu {
 }
 
 @media (max-width: 564px) {
+  h3 {
+    font-size: 1.2rem;
+  }
+
   .zone1, .zone2 {
     padding: 4rem 3rem 8rem;
     box-sizing: border-box;
@@ -535,7 +551,7 @@ input#menu {
   }
 
   .zone2 ul {
-    min-width: 350px;
+    min-width: 300px;
   }
 }
 </style>
