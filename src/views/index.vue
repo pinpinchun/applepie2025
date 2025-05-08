@@ -3,16 +3,21 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const activeIndex = ref('1')
 const isMobile = ref(false);
-const isPaid = ref(false);
+const isPad = ref(false);
 
 const checkRWD = () => {
+  if (window.innerWidth >= 1024){
+    isPad.value = false;
+    isMobile.value = false;
+  }
+
   if (window.innerWidth <= 1024 && window.innerWidth > 576){
-    isPaid.value = true;
+    isPad.value = true;
     isMobile.value = false;
   }
 
   if (window.innerWidth <= 576){
-    isPaid.value = false;
+    isPad.value = false;
     isMobile.value = true;
   }
 }
@@ -44,7 +49,7 @@ onUnmounted(() => {
         </el-menu-item>
 
         <!-- Desktop Nav -->
-        <template v-if="!isMobile && !isPaid">
+        <template v-if="!isMobile && !isPad">
           <el-menu-item index="1"><a href="#about" class="nav-link">關於計畫</a></el-menu-item>
           <el-menu-item index="2"><a href="#why" class="nav-link">為什麼參加</a></el-menu-item>
           <el-menu-item index="3"><a href="#process" class="nav-link">活動流程</a></el-menu-item>
@@ -54,7 +59,7 @@ onUnmounted(() => {
       </el-menu>
 
       <!-- Mobile Nav -->
-      <nav class="nav-box" v-if="isMobile || isPaid">
+      <nav class="nav-box" v-if="isMobile || isPad">
         <input type="checkbox" id="menu">
         <label for="menu" class="line">
           <div class="menu"></div>
@@ -72,10 +77,8 @@ onUnmounted(() => {
       </nav>
       <section class="declaration">
         <h1>蘋果派計畫</h1>
-        <h4 v-if="!isMobile">兩天找到屬於你的 Passion Project</h4>
-        <h4 v-else>兩天找到屬於你的 <br>Passion Project</h4>
-        <h5 v-if="!isMobile">"在迷惘的人生中，至少要為一件熱情的事而行動。"</h5>
-        <h5 v-else>"在迷惘的人生中，<br>至少要為一件熱情的事而行動。"</h5>
+        <h4>兩天找到屬於你的 <br v-if="isMobile">Passion Project</h4>
+        <h5>"在迷惘的人生中，<br v-if="isMobile">至少要為一件熱情的事而行動。"</h5>
         <a href="#registration" class="btn">
           <svg height="18" width="18" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
               <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
@@ -98,7 +101,7 @@ onUnmounted(() => {
                 即使到了大學，身邊仍有很多同學，<br>
                 不討厭自己的科系，卻也談不上喜歡。<br>
                 每天過得還行，卻一點也不令人興奮。<br><br>
-                事實上，根據調查，<span style="font-weight: 700;">近六成的人後悔當初選的科系——</span><br>
+                事實上，根據調查，<br><span style="font-weight: 700;">近六成的人後悔當初選的科系——</span><br>
                 因為在選擇之前，多數人從來沒有機會好好認識自己。<br><br>
                 而「<span style="color: brown;">蘋果派計劃</span>」，正是為了改變這件事。
               </p>
@@ -107,7 +110,7 @@ onUnmounted(() => {
         </section>
         <section id="name" class="zone2">
           <h2 class="zone_title">為什麼叫「蘋果派計畫」？</h2>
-          <h4>「探索熱情，就像做一顆蘋果派——<br v-if="isMobile || isPaid">開始了，就有故事。」</h4>
+          <h4>「探索熱情，就像做一顆蘋果派——<br v-if="isMobile || isPad">開始了，就有故事。」</h4>
           <p>在繪本《環遊世界做蘋果派》中，小女孩原本只是想做一顆蘋果派，<br>
             卻發現食材不足、超市也沒開，於是展開了旅程——<br>
             去義大利割一把金黃色的小麥，再到法國向母雞借一顆蛋，<br>
@@ -121,7 +124,7 @@ onUnmounted(() => {
           <img src="../assets/visual/friend.png" alt="">
         </section>
         <section id="process" class="zone3">
-          <h2 class="zone_title">那麼「蘋果派計劃」會如何進行？</h2>
+          <h2 class="zone_title">「蘋果派計劃」會如何進行？</h2>
           <p>
             我們相信，找到熱情，不是一瞬間的靈光，<br>
             而是透過探索、整理、行動，一步步累積而來。<br><br>
@@ -137,40 +140,41 @@ onUnmounted(() => {
             並找到「踏出第一步」的方法，<br>
             讓熱情不只是停留在想像中，而能真正出發。
           </p>
-          <div class="timeline">
-            <div class="timeline-dot"></div>
-            <h3>第一階段：自我探索</h3>
-            <p>從喜歡的、關心的、想學的、擅長的事出發，透過探索活動，重新連結自己心底真正的熱情。</p>
-            <ul>
-              <li>探索興趣與價值觀</li>
-              <li>發現自己的優勢與特質</li>
-              <li>釐清自己真正關心與好奇的議題</li>
-            </ul>
-            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="自我探索活動照片">
-          </div>
-          <div class="timeline">
-            <div class="timeline-dot"></div>
-            <h3>第二階段：創意發想</h3>
-            <p>用工具激發創意，梳理各種關於自己的線索，一步步發想出讓自己心動的 Passion Project。</p>
-            <ul>
-              <li>終極二選一</li>
-              <li>團體腦力激盪</li>
-              <li>專案主題初步確定</li>
-            </ul>
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="熱情計畫轉化活動照片" class="w-full h-auto rounded-md shadow-md">
-          </div>
-          <div class="timeline">
-            <div class="timeline-dot"></div>
-            <h3>第三階段：專案規劃</h3>
-            <p>把「想做的事」變成「可以出發的事」，並設定清晰目標和可行路徑，讓熱情不再只是想像。</p>
-            <ul>
-              <li>設定專案願景與目標</li>
-              <li>拆解行動里程碑</li>
-              <li>撰寫可行的初步行動計劃</li>
-            </ul>
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="行動計畫活動照片" class="w-full h-auto rounded-md shadow-md">
-          </div>
-          <div class="timeline">
+          <div class="timeline_zone">
+            <div class="timeline">
+              <div class="timeline-dot"></div>
+              <h3>第一階段：自我探索</h3>
+              <p>從喜歡的、關心的、想學的、擅長的事出發，透過探索活動，重新連結自己心底真正的熱情。</p>
+              <ul>
+                <li>探索興趣與價值觀</li>
+                <li>發現自己的優勢與特質</li>
+                <li>釐清自己真正關心與好奇的議題</li>
+              </ul>
+              <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="自我探索活動照片">
+            </div>
+            <div class="timeline">
+              <div class="timeline-dot"></div>
+              <h3>第二階段：創意發想</h3>
+              <p>用工具激發創意，梳理各種關於自己的線索，一步步發想出讓自己心動的 Passion Project。</p>
+              <ul>
+                <li>終極二選一</li>
+                <li>團體腦力激盪</li>
+                <li>專案主題初步確定</li>
+              </ul>
+              <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="熱情計畫轉化活動照片" class="w-full h-auto rounded-md shadow-md">
+            </div>
+            <div class="timeline">
+              <div class="timeline-dot"></div>
+              <h3>第三階段：專案規劃</h3>
+              <p>把「想做的事」變成「可以出發的事」，並設定清晰目標和可行路徑，讓熱情不再只是想像。</p>
+              <ul>
+                <li>設定專案願景與目標</li>
+                <li>拆解行動里程碑</li>
+                <li>撰寫可行的初步行動計劃</li>
+              </ul>
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="行動計畫活動照片" class="w-full h-auto rounded-md shadow-md">
+            </div>
+            <div class="timeline">
             <div class="timeline-dot"></div>
             <h3>第四階段：踏出行動</h3>
             <p>最後，我們會帶著你實際規劃，並找到「踏出行動的第一步」方法，讓想像不再只是空談，而能真正出發。</p>
@@ -180,8 +184,9 @@ onUnmounted(() => {
               <li>在實作中反思、聚焦、成長</li>
             </ul>
             <img src="../assets/visual/work.jpg" alt="行動計畫活動照片" class="w-full h-auto rounded-md shadow-md">
+            </div>
           </div>
-          <h4>「蘋果派計劃」陪你從迷惘出發，找到熱情，踏出屬於自己的第一步。 </h4>
+          <h4>「蘋果派計劃」陪你從迷惘出發，<br v-if="isPad">找到熱情，踏出屬於自己的第一步。 </h4>
         </section>
         <section id="why" class="zone4">
           <h2 class="zone_title">參加「蘋果派計劃」的理由</h2>
@@ -342,9 +347,43 @@ onUnmounted(() => {
         <section id="who" class="zone7">
           <h2 class="zone_title">我們是誰？</h2>
           <div class="whoweare">
-
+            <div class="people">
+              <div class="people_img">
+                <img src="../assets/visual/friend.png" alt="">
+              </div>
+              <div class="people_intro">
+                <h3><span>品恩</span><br>課程發起人</h3>
+                <p>台大心理系畢業，曾在多家教育機構擔任課程設計師，致力於幫助青少年探索自我與未來方向。</p>
+              </div>
+            </div>
+            <div class="people">
+              <div class="people_img">
+                <img src="../assets/visual/friend.png" alt="">
+              </div>
+              <div class="people_intro">
+                <h3><span>宥廷</span><br>營隊pm</h3>
+                <p>台大心理系畢業，曾在多家教育機構擔任課程設計師，致力於幫助青少年探索自我與未來方向。</p>
+              </div>
+            </div>
+            <div class="people">
+              <div class="people_img">
+                <img src="../assets/visual/friend.png" alt="">
+              </div>
+              <div class="people_intro">
+                <h3><span>Passion Project</span><br>引導員團隊</h3>
+                <p>台大心理系畢業，曾在多家教育機構擔任課程設計師，致力於幫助青少年探索自我與未來方向。</p>
+              </div>
+            </div>
           </div>
         </section>
+        <div class="footer">
+          <div class="footer_logo">
+            <img src="/src/assets/visual/logo.svg" alt="applepie logo" class="logo" />
+            <span class="logoText">蘋果派計畫</span>
+            <p>兩天找到屬於你的 Passion Project</p>
+          </div>
+          <p>© 2025 蘋果派計畫. All rights reserved.</p>
+        </div>
       </section>
     </el-container>
   </div>
@@ -391,6 +430,7 @@ h5 {
   line-height: 1.75rem;
   margin-bottom: 3rem;
   font-style: italic;
+  color: #fff;
 }
 
 p {
@@ -510,12 +550,12 @@ p {
 .line .menu {
   left: 18px;
   top: 27px;
-  height: 1px;
+  height: 2px;
 }
 
 .line .menu::before {
   top: -6px;
-  height: 1.5px;
+  height: 2px;
 }
 
 .line .menu::after {
@@ -595,7 +635,7 @@ input#menu {
   top: 0;
   left: 0;
   z-index: -1;
-  background: url(/src/assets/visual/bg1.jpg) no-repeat bottom center / cover;
+  background: url(/src/assets/visual/bg.jpg) no-repeat center / cover;
 }
 
 .btn {
@@ -677,7 +717,6 @@ input#menu {
 }
 
 .highschool p {
-  font-style: italic;
   font-size: 1.1rem;
   text-align: center;
   line-height: 1.3;
@@ -731,7 +770,7 @@ input#menu {
   margin-top: 1rem;
   width: 20%;
   z-index: 2;
-  max-width: 250px;
+  max-width: 225px;
 }
 
 /* 如何進行 */
@@ -749,15 +788,25 @@ input#menu {
   margin: 4rem auto;
 }
 
-.timeline {
-  position: relative;
-  padding-left: 30px;
-  border-left: 1px solid #E8C39E;
-  width: 50%;
-  margin: 0 auto 4rem;
-  padding-bottom: 1rem;
+.timeline_zone{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
+.timeline {
+  position: relative;
+  border-top: 1px solid #E8C39E;
+  width: 20%;
+  margin: 0 auto 4rem;
+  flex-grow: 1;
+  padding: 0 30px 1rem;
+  transition-duration: 300ms;
+}
+
+.timeline:hover {
+  background-color: #ffffff;
+}
 
 .timeline-dot {
   width: 16px;
@@ -765,9 +814,9 @@ input#menu {
   background-color: #D9A566;
   border-radius: 50%;
   position: absolute;
-  left: -8px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  top: -8px;
+  transform: translateX(-50%);
 }
 
 .timeline h3{
@@ -933,7 +982,13 @@ input#menu {
   color: white;
   transition: all 0.3s ease;
   text-decoration: inherit;
-  margin: 0 auto;
+  margin: 1rem auto;
+}
+
+.regist a:hover{
+  background: #C89355;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 165, 102, 0.3);
 }
 
 .sNumber{
@@ -962,9 +1017,92 @@ input#menu {
   display: grid;
   max-width: 64rem;
   margin: 5rem auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); 
+  gap: 2rem;
+}
+
+.people{
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  background-color: rgb(253 251 247);
+  border-radius: 0.125rem;
+  overflow: hidden;
+  transition-duration: 300ms;
+}
+
+.people:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.people_img {
+  height: 12rem;
+  overflow: hidden;
+}
+
+.people_img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  
+}
+
+.people_intro {
+  padding: 1.5rem;
+}
+
+.people_intro h3{
+  text-align: left;
+  margin-bottom: 0  ;
+}
+
+.people_intro span{
+  color: #374151;
+}
+
+/* footer */
+.footer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 150px;
+  background-color: rgb(51 51 51);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_logo {
+  margin: 0 3rem;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  flex-wrap: wrap;
+}
+
+.footer_logo .logo {
+  width: 50px;
+  /* background-color: #ffffff; */
+  border-radius: 50%;
+  padding: 10px 10px 10px 0;
+}
+
+.footer_logo p{
+  color: rgb(156 163 175);
+  margin: 0;
+}
+
+.footer>p{
+  color: rgb(156 163 175);
+  margin: 0 3rem;
 }
 
 /* 響應式斷點 */
+@media (max-width: 1385px) {
+  .timeline{
+    width: 32%;
+  }
+}
 
 @media (max-width: 1024px) {
   .el-menu {
@@ -995,8 +1133,8 @@ input#menu {
     margin-left: 65px;
   }
 
-  .zone1, .zone4 {
-    padding: 4rem 3rem 8rem;
+  .zone1, .zone3 {
+    padding-bottom: 8rem;
   }
 
   .highschool{
@@ -1013,6 +1151,10 @@ input#menu {
     width: 70%;
   }
 
+  .intro_text p {
+    text-align: center;
+  }
+
   .zone2 {
     padding-bottom: 12rem;
   }
@@ -1022,8 +1164,8 @@ input#menu {
     max-width: 200px;
   }
 
-  .zone4 {
-    padding: 4rem 3rem 8rem;
+  .zone3>p {
+    text-align: center;
   }
 }
 
@@ -1033,25 +1175,87 @@ input#menu {
   }
 
   .zone2 img {
-    width: 30%;
+    width: 40%;
     right: 10%;
   }
 
+  .zone2 p, .zone4 p {
+    text-align: center;
+  }
+
+  .zone3 h4{
+    margin-top: 0;
+  }
+
+  .timeline{
+    width: 100%;
+    border-top: unset;
+    border-left: 1px solid #E8C39E;
+  }
+
+  .timeline-dot {
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .regist{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .zone7 {
+    padding-bottom: 2rem;
+  }
+
+  .whoweare{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer_logo {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer_logo p{
+    margin-left: 2rem;
+  }
 }
 
 @media (max-width: 564px) {
-  h3 {
+
+  h1{
+    font-size: 3rem;
+  }
+
+  h2{
+    font-size: 1.5rem;
+  }
+
+  h3, .text, .zone5 p, .regist a{
     font-size: 1.15rem;
   }
 
-  .zone1, .zone2 ,.zone4 {
-    padding: 4rem 3rem 8rem;
-    box-sizing: border-box;
+  h4, .highschool h3 {
+    font-size: 1.3rem;
   }
 
-  .zone1 h2::after, .zone4 h2::after {
-    width: 0;
-    height: 0;
+  h5, p, .highschool p, .timeline ul, .font-bold {
+    font-size: 1rem;
+  }
+
+  .zone_title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .zone1, .zone2, .zone3, .zone4, .zone6, .zone7 {
+    padding: 3rem 2rem 8rem;
   }
 
   .highschool{
@@ -1066,12 +1270,34 @@ input#menu {
     width: 100%;
   }
 
-  .zone2 {
+  .zone2, .zone4 {
     padding-bottom: 10rem;
   }
 
   .zone4 ul {
     min-width: 300px;
+  }
+  
+  .zone4 h1{
+    font-size: 2.5rem;
+  }
+
+  .zone6 {
+    padding-bottom: 5rem;
+  }
+
+  .zone7 {
+    padding-bottom: 1rem;
+  }
+
+  .footer_logo{
+    flex-direction: row;
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+  
+  .footer p{
+    margin: 0;
   }
 }
 </style>
