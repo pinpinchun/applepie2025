@@ -74,9 +74,11 @@ onUnmounted(() => {
         <div class="menu-list">
           <ul>
             <li><a href="#about">關於計畫</a></li>
+            <li><a href="#name">計畫緣起</a></li>
             <li><a href="#process">活動流程</a></li>
             <li><a href="#why">為什麼參加</a></li>
             <li><a href="#registration">報名資訊</a></li>
+            <li><a href="#who">我們是誰</a></li>
           </ul>
         </div>
       </nav>
@@ -106,10 +108,11 @@ onUnmounted(() => {
                 即使到了大學，身邊仍有很多同學，<br>
                 不討厭自己的科系，卻也談不上喜歡。<br>
                 每天過得還行，卻一點也不令人興奮。<br><br>
-                事實上，根據調查，<br><span style="font-weight: 700;">近六成的人後悔當初選的科系——</span><br>
+                事實上，根據調查，<br>
+                近六成的人後悔當初選的科系。<br>
                 因為在選擇之前，<br>
                 多數人從來沒有機會好好認識自己。<br><br>
-                而「<span style="color: brown; font-weight: bold;">蘋果派計劃</span>」，正是為了改變這件事。
+                <span style="font-weight: 700;">而「蘋果派計劃」，正是為了改變這件事。</span>
               </p>
             </div>
           </div>
@@ -124,10 +127,10 @@ onUnmounted(() => {
 
             終於，她完成了蘋果派，也順便環遊了世界。<br><br>
 
-            有時，一顆蘋果派，也能開啟一場冒險。<br>
+            <span style="font-weight: 700;">有時，一顆蘋果派，也能開啟一場冒險。</span><br>
             一個簡單的起心動念，便足以帶我們踏上一段意想不到的旅程。
           </p>
-          <img src="../assets/visual/world.png" alt="">
+          <img src="../assets/visual/world2.png" alt="">
           <!-- <img src="../assets/visual/friend.png" alt=""> -->
         </section>
         <section id="process" class="zone3">
@@ -158,7 +161,6 @@ onUnmounted(() => {
                 <li>發現自己的優勢與特質</li>
                 <li>釐清關心與好奇的議題</li>
               </ul>
-              <!-- <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="自我探索活動照片"> -->
                <img src="../assets/visual/step1.jpg" alt="">
             </div>
             <div class="timeline">
@@ -170,7 +172,6 @@ onUnmounted(() => {
                 <li>團體腦力激盪</li>
                 <li>專案主題初步確定</li>
               </ul>
-              <!-- <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="熱情計畫轉化活動照片" class="w-full h-auto rounded-md shadow-md"> -->
                <img src="../assets/visual/step2.jpg" alt="">
             </div>
             <div class="timeline">
@@ -180,9 +181,8 @@ onUnmounted(() => {
               <ul>
                 <li>設定專案願景與目標</li>
                 <li>拆解行動里程碑</li>
-                <li>撰寫可行的初步行動計劃</li>
+                <li>撰寫可行的行動計劃</li>
               </ul>
-              <!-- <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="行動計畫活動照片" class="w-full h-auto rounded-md shadow-md"> -->
                <img src="../assets/visual/step3.jpg" alt="">
             </div>
             <div class="timeline">
@@ -194,7 +194,6 @@ onUnmounted(() => {
               <li>練習不完美但開始行動</li>
               <li>在實作中反思、成長</li>
             </ul>
-            <!-- <img src="../assets/visual/work.jpg" alt="行動計畫活動照片" class="w-full h-auto rounded-md shadow-md"> -->
             <img src="../assets/visual/step4.jpg" alt="">
             </div>
           </div>
@@ -283,7 +282,7 @@ onUnmounted(() => {
                     </svg>
                     <div>
                         <span class="font-bold">營隊費用：</span>
-                        <p>報名費用：1200元（包含兩天餐費、場地費及課程教材等）<br><span style="color: #c45656; display: block; margin: 10px 0;">＊若為清寒家庭，提供相關證明即可全額免費參加。</span></p>
+                        <p>報名費用：1500元（包含兩天餐費、場地費及課程教材等）<br><span style="color: #c45656; display: block; margin: 10px 0;">＊若為清寒家庭，提供相關證明即可全額免費參加。</span></p>
                     </div>
                 </li>
                 <li>
@@ -402,7 +401,7 @@ onUnmounted(() => {
             </div>
           </div>
         </section>
-        <section id="name" class="zone_last">
+        <section id="conclusion" class="zone_last">
           <p>如果你也曾經迷惘，不知道自己想要什麼；<br v-if="!isMobile">
             如果你也渴望，為真正熱愛的事踏出一步——<br v-if="!isMobile">
             那麼，「蘋果派計劃」就是為你設計的探索營。<br><br>
@@ -433,7 +432,7 @@ onUnmounted(() => {
     :width="dialogWidth"
     :before-close="handleClose"
   >
-    <div v-if="people == 'pinun'" style="font-size: 1.1rem;">
+    <div v-if="people == 'pinun'" style="font-size: 0.9rem;">
       嗨我是品恩！一個喜歡故事、喜歡溫暖、喜歡教育的女孩。從國中開始就很關注教育創新，尤其希望能改變傳統填鴨考試導向的教育體制。<br><br>
 
       對我而言，教育應該讓學生把世界當成教室，並在探索與行動的過程中更認識自我。因此，我從高中就開始走出校園、發起各種 projects，在教育、環保、無家者議題都有深入涉略，也有多個NGO實習的經驗。高中畢業後我代表台灣前往有「小聯合國」之稱的英國UWC兩年，與來自100多個國家的同學一起上課生活。<br><br>
@@ -450,7 +449,7 @@ onUnmounted(() => {
         <li>錄取 2024 Jamie’s Gapyear Program</li>
       </ul>
     </div>
-    <div v-else-if="people == 'yoting'" style="font-size: 1.1rem;">
+    <div v-else-if="people == 'yoting'" style="font-size: 0.9rem;">
       高中升上竹科實中之後，突然發現自己在學的東西在未來幾乎用不到，讓我從國中時的校排一，變成在高中時完全不想讀書的人。<br><br>
 
       課業之餘，在參與學生會、服務性社團等活動中，我逐漸找到熱情，尤其在服務性社團的教學經驗，開啟了我在實驗教育的教學旅程。<br><br>
@@ -468,7 +467,7 @@ onUnmounted(() => {
         <li>台大設計思考教練</li>
       </ul>
     </div>
-    <div v-else style="font-size: 1.1rem;">
+    <div v-else style="font-size: 0.9rem;">
       我們是一群來自師大、台大的大學生，因著對教育和自我探索的興趣而集結在一起，共同參與了為期 16 週的課程——「Passion Project：師培生的熱情探索與行動計劃」。在課程中，透過各種方法探索自己的熱情，最終發想並執行了屬於自己的行動。<br><br>
 
       而現在，我們不只是持續探索自我，更也想成為陪你出發的人。在這兩天的營隊裡，我們會陪你一起走進內在，找到值得行動的小小方向。
@@ -487,7 +486,7 @@ h1 {
   font-weight: 700;
   font-size: 3.75rem;
   line-height: 1;
-  margin: 6rem 0 1.5rem;
+  margin: 10rem 0 1.5rem;
 }
 
 h2 {
@@ -675,7 +674,7 @@ p {
 
 /* 選單開合 */
 #menu:checked ~ .menu-list {
-  height: 280px;
+  height: 400px;
 }
 
 .menu-list {
@@ -743,12 +742,12 @@ input#menu {
 
 .declaration>h1, .declaration>h4, .declaration>h5 {
   color: #fff;
-  text-shadow: 1px 1px 10px #333;
+  text-shadow: 1px 1px 10px #514f4f;
 }
 
 .btn {
   border: none;
-  width: 10em;
+  width: 8em;
   height: 3em;
   border-radius: 3em;
   display: flex;
@@ -857,7 +856,7 @@ input#menu {
 .zone2 {
   background-color: #ebe0d1;
   border-radius: 80px 80px 0 0;
-  padding: 4rem 5rem 20rem;
+  padding: 4rem 5rem 25rem;
   margin-top: -5rem;
   position: relative;
 }
@@ -878,14 +877,11 @@ input#menu {
 .zone2 img{
   position: absolute;
   right: 50%;
-  /* right: 5%; */
-  transform: translateX(50%) ;
-  bottom: 65px;
+  transform: translateX(55%) ;
+  bottom: 80px;
   margin-top: 1rem;
-  width: 100%;
-  height: 200px;
+  width: 40%;
   z-index: 2;
-  /* max-width: 225px; */
 }
 
 /* 如何進行 */
@@ -1010,7 +1006,6 @@ input#menu {
 
 /* 報名資訊 */
 .zone6 {
-  /* background-color: #d0ddd3; */
   background-color: #ebe0d1;
   padding: 4rem 5rem;
   position: relative;
@@ -1184,7 +1179,6 @@ input#menu {
 
 /* 結語 */
 .zone_last {
-  /* background-color: #D96D5B; */
   background-color: transparent;
   padding: 4rem 3rem;
   margin-top: 2rem;
@@ -1223,7 +1217,6 @@ input#menu {
 
 .footer_logo .logo {
   width: 50px;
-  /* background-color: #ffffff; */
   border-radius: 50%;
   padding: 10px 10px 10px 0;
 }
@@ -1244,6 +1237,11 @@ input#menu {
 
 /* 響應式斷點 */
 @media (max-width: 1385px) {
+
+  .zone2 img {
+    width: 50%;
+  }
+  
   .timeline{
     width: 32%;
   }
@@ -1262,10 +1260,6 @@ input#menu {
 
   .line{
     top: 10px;
-  }
-
-  #menu:checked ~ .menu-list{
-    height: 360px;
   }
   
   .menu-list{
@@ -1301,16 +1295,15 @@ input#menu {
   }
 
   .zone2 {
-    padding-bottom: 18rem;
-  }
-
-  .zone2 img{
-    /* width: 25%; */
-    /* max-width: 200px; */
+    padding-bottom: 21rem;
   }
 
   .zone3>p {
     text-align: center;
+  }
+
+  .declaration h1{
+    margin-top: 6rem;
   }
 
   .people:last-of-type img {
@@ -1321,17 +1314,17 @@ input#menu {
 }
 
 @media (max-width: 768px){
+  
   .highschool p {
     line-height: 2.3;
   }
 
-  .zone2 img {
-    /* width: 40%; */
-    /* right: 10%; */
-  }
-
   .zone2 p, .zone4 p {
     text-align: center;
+  }
+
+  .zone2 img {
+    width: 70%;
   }
 
   .zone3 h4{
@@ -1436,7 +1429,11 @@ input#menu {
   }
 
   .zone2 {
-    padding-bottom: 18rem;
+    padding-bottom: 16rem;
+  }
+
+  .zone3 {
+    border-radius: 0;
   }
 
   .zone3 h4 {
