@@ -296,7 +296,7 @@ onUnmounted(() => {
                 </li>
               </ul>
             </div>
-            <div  class="regist_right">
+            <div class="regist_right">
               <h3>報名流程</h3>
               <ul>
                 <li>
@@ -989,7 +989,7 @@ input#menu {
   min-width: 38 0px;
 }
 
-.zone4 h1{
+.zone4 ul h1{
   margin-top: 1rem;
   font-size: 3rem;
 }
