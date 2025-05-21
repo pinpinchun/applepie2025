@@ -29,6 +29,10 @@ const checkRWD = () => {
   }
 }
 
+function closeMenu(){
+  document.getElementById('menu').checked = false;
+}
+
 onMounted(() => {
   checkRWD()
   window.addEventListener('resize', checkRWD)
@@ -73,12 +77,12 @@ onUnmounted(() => {
 
         <div class="menu-list">
           <ul>
-            <li><a href="#about">關於計畫</a></li>
-            <li><a href="#name">計畫緣起</a></li>
-            <li><a href="#process">活動流程</a></li>
-            <li><a href="#why">為什麼參加</a></li>
-            <li><a href="#registration">報名資訊</a></li>
-            <li><a href="#who">我們是誰</a></li>
+            <li><a href="#about" @click="closeMenu()">關於計畫</a></li>
+            <li><a href="#name" @click="closeMenu()">計畫緣起</a></li>
+            <li><a href="#process" @click="closeMenu()">活動流程</a></li>
+            <li><a href="#why" @click="closeMenu()">為什麼參加</a></li>
+            <li><a href="#registration" @click="closeMenu()">報名資訊</a></li>
+            <li><a href="#who" @click="closeMenu()">我們是誰</a></li>
           </ul>
         </div>
       </nav>
@@ -282,7 +286,7 @@ onUnmounted(() => {
                     </svg>
                     <div>
                         <span class="font-bold">營隊費用：</span>
-                        <p>報名費用：1500元（包含兩天餐費、場地費及課程教材等）<br><span style="color: #c45656; display: block; margin: 10px 0;">＊若為清寒家庭，提供相關證明即可全額免費參加。</span></p>
+                        <p>報名費用：1500元（包含兩天餐費、場地費及課程教材等，不提供住宿）<br><span style="color: #c45656; display: block; margin: 10px 0;">＊若為清寒家庭，提供相關證明即可全額免費參加。</span></p>
                     </div>
                 </li>
                 <li>
@@ -305,7 +309,7 @@ onUnmounted(() => {
                   </div>
                   <div>
                       <span class="font-bold">填寫報名表單：</span>
-                      <p>建議預留30分鐘填寫，表單將於6/1（日）截止！</p>
+                      <p>建議預留30分鐘填寫，表單將於6/6（五）截止！</p>
                   </div>
                 </li>
                 <li>
@@ -430,7 +434,6 @@ onUnmounted(() => {
     v-model="dialogVisible"
     :title="tips"
     :width="dialogWidth"
-    :before-close="handleClose"
   >
     <div v-if="people == 'pinun'" style="font-size: 0.9rem;">
       嗨我是品恩！一個喜歡故事、喜歡溫暖、喜歡教育的女孩。從國中開始就很關注教育創新，尤其希望能改變傳統填鴨考試導向的教育體制。<br><br>
