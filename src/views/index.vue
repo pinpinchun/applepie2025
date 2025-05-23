@@ -340,7 +340,7 @@ onUnmounted(() => {
                   </div>
                 </li>
                 <li>
-                  <a href="https://docs.google.com/forms/d/1C6MolNlxDacQE8LnTwH7W296eDRGffziTF1R0IsbHt4/edit" target="_blank">前往報名表單</a>
+                  <a href="https://forms.gle/18fFurKQJTq5vi7h6" target="_blank">前往報名表單</a>
                 </li>
               </ul>
             </div>
