@@ -327,7 +327,7 @@ onUnmounted(() => {
                   </div>
                   <div>
                       <span class="font-bold">錄取通知：</span>
-                      <p>我們將會在6/13（五）寄送錄取、備取通知信。</p>
+                      <p>我們將會在6/16（一）寄送錄取、備取通知信。</p>
                   </div>
                 </li>
                 <li>
